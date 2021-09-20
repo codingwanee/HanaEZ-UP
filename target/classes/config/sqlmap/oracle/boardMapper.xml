@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+	<resultMap type="boardVO" id="boardMap">
+		<result column="CMT_CNT" property="cmtCnt" />
+		<result column="VIEW_CNT" property="viewCnt" />
+		<result column="REG_DATE" property="regDate" />
+	</resultMap>	
+	<resultMap type="commentVO" id="commentMap">
+		<result column="REG_DATE" property="regDate" />
+	</resultMap>	
+	  
+  <!-- 전체글 조회 -->
+  <select id="selectAll" resultType="boardVO" resultMap="boardMap">
+  	SELECT NUM, WRITER, TITLE, VIEW_CNT, DEPTH, SUBJECT
+  		, decode(to_char(sysdate, 'yyyy-mm-dd'), to_char(reg_date, 'yyyy-mm-dd'), to_char(reg_date, 'hh:mi:ss'), to_char(reg_date, 'yyyy-mm-dd')) as reg_date
+  	FROM TB_BOARD  
+	ORDER BY NUM DESC
+  </select>
+  
+  <!-- 숨긴글 조회 -->
+  <select id="selectAllHidden" resultType="boardVO" resultMap="boardMap">
+    SELECT NUM, WRITER, TITLE, VIEW_CNT, DEPTH, SUBJECT, TO_CHAR(REG_DATE, 'YYYY-MM-DD') AS REG_DATE
+  	FROM TB_BOARD
+  	WHERE STATUS = '1'
+	ORDER BY NUM DESC
+  </select>
+  
+  <!-- 상세글 조회 -->
+  <select id="selectOne" parameterType="int" resultType="boardVO" resultMap="boardMap">
+  	SELECT NUM, WRITER, TITLE, CONTENT, REG_DATE, VIEW_CNT
+  		, decode(to_char(sysdate, 'yyyy-mm-dd'), to_char(reg_date, 'yyyy-mm-dd'), to_char(reg_date, 'hh:mi:ss'), to_char(reg_date, 'yyyy-mm-dd')) as reg_date
+  	FROM TB_BOARD  
+	WHERE NUM = #{num}
+	ORDER BY NUM DESC
+  </select>  
+  
+  <!-- 글 조회 시 조회수 증가 -->
+  <update id="updateViewCnt" parameterType="int">
+  	UPDATE TB_BOARD
+  	SET VIEW_CNT = VIEW_CNT + 1
+  	WHERE NUM = #{num}  
+  </update>
+  
+   <!-- 새글등록 -->   
+  <insert id="insertOne" parameterType="boardVO">
+  	INSERT INTO TB_BOARD
+  	(NUM, WRITER, TITLE, CONTENT, REG_DATE)
+  	VALUES(SEQ_BOARD_NO.NEXTVAL, #{writer}, #{title}, #{content}, SYSDATE)
+  </insert>
+  
+  
+  <!-- 글 수정 -->
+  <update id="updateOne" parameterType="boardVO">
+  	UPDATE TB_BOARD
+  	SET TITLE = #{title}, CONTENT = #{content}
+  	WHERE NUM = #{num}
+  </update>
+  
+  <!-- 글 삭제 -->
+  <delete id="deleteOne" parameterType="int">
+  	DELETE FROM TB_BOARD
+  	WHERE NUM = #{num}
+  </delete>
+  
+   <!-- 답글등록 -->
+  <insert id="insertReply" parameterType="boardVO">
+  	INSERT INTO TB_BOARD
+  	(NUM, WRITER, TITLE, CONTENT, REG_DATE, ORIGIN, DEPTH, ORD)
+  	VALUES(SEQ_BOARD_NO.NEXTVAL, #{writer}, #{title}, #{content}, #{regDate}, #{origin}, #{depth}+1, #{ord}+1)
+  </insert>
+  
+  <!-- 답글등록 위한 부모글 조회 -->
+  <select id="selectOrigin" parameterType="int" resultType="boardVO" resultMap="boardMap">
+  	SELECT NUM, ORIGIN, ORD, DEPTH
+  	FROM TB_BOARD
+  	WHERE NUM = #{num}
+  </select>
+  
+  
+  
+  <!-- //////////////// 댓글  //////////////// -->
+  
+  <!-- 댓글조회 -->
+  <select id="selectAllComment" parameterType="int" resultType="commentVO" resultMap="commentMap">
+  	SELECT *
+  	FROM TB_COMMENT
+  	WHERE BOARDNUM = #{boardNum}
+  </select>
+  
+    
+  <!-- 댓글등록 -->
+  <insert id="insertComment" parameterType="commentVO">
+  	INSERT INTO TB_COMMENT (NUM, BOARDNUM, WRITER, CONTENT, REG_DATE)
+  	VALUES(SEQ_COMMENT_NO.NEXTVAL, #{boardNum}, #{writer}, #{content}, SYSDATE)
+  </insert>
+  
+  <!-- 댓글 등록 시 원글 댓글수 +1 -->
+  <update id="updateCmtCnt" parameterType="int">
+  	UPDATE TB_BOARD
+  	SET CMT_CNT = CMT_CNT + 1
+  	WHERE NUM = #{num}
+  </update>
+  
+  <!-- 댓글 수정 -->
+  <update id="updateComment" parameterType="commentVO">
+  	UPDATE TB_COMMENT
+  	SET CONTENT = #{content}
+  	WHERE NUM = #{num}
+  </update>
+  
+  <!-- 댓글 삭제 -->
+  <delete id="deleteComment" parameterType="commentVO">
+  	DELETE FROM TB_COMMENT
+  	WHERE NUM = #{num} AND BOARDNUM = #{boardNum}
+  </delete>
+
+</mapper>

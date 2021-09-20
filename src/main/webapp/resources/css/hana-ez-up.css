@@ -1,0 +1,817 @@
+/*
+ * basic 기본 요소들
+ */
+
+body {
+    font-family: "돋움", dotum, Helvetica, AppleGothic, sans-serif;
+    font-size: 15px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    color: #666;
+    background-color: #f8f9fa;
+}
+
+img {
+    border: 0px;
+    font-size: 0px;
+    height: auto !important;
+    margin: 0px;
+    padding: 0px;
+}
+
+select {
+    /*
+    -webkit-appearance: none; 네이티브 외형 감추기
+    -moz-appearance: none;
+    appearance: none;
+    background: url(이미지 경로) no-repeat 95% 50%; 화살표 모양의 이미지
+     */
+    height: auto;
+    line-height: normal; /* line-height 초기화 */
+    margin: 0;
+    padding: .3em .5em;
+    font-family: inherit; /* 폰트 상속 */
+    border: 1px solid #666;
+}
+/* 
+h2 {
+    text-align: left;
+    font-family: "맑은고딕", Malgun Gothic, dotum, gulim, sans-serif;
+    color: #038e90;
+    border-bottom: 3px solid #ccc;
+    padding: 26px 0 12px;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+ */
+
+pre {
+/*     background-color: #E6E6FA; */
+    padding:10px;
+    overflow: auto;
+    white-space: pre-wrap; /* pre tag내에 word wrap */
+}
+
+.board table th {
+    color: #333;
+    text-align: center;
+	/*     border-left: 1px solid #dadcdb; */
+}
+
+textarea:focus {
+    /*    outline: 1px solid #038e90;*/
+    outline: none;
+}
+
+
+ul {
+	list-style:none;
+}
+
+
+@font-face {
+  font-family: "hana";
+  src: url(../fonts/HanaL.ttf) format('ttf');
+  font-weight: 300;
+}
+@font-face {
+  font-family:"hana";
+  src: url(../fonts/HanaM.ttf) format('ttf');
+  font-weight: normal;
+}
+@font-face {
+  font-family: "hana";
+  src: url(../fonts/HanaB.ttf) format('truetype');
+  font-weight: 500;
+}
+
+ 
+@font-face {
+	font-family: hanaL;
+	src: url(../fonts/HanaL.ttf) format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: hanaM;
+	src: url(../fonts/HanaM.ttf) format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: hanaB;
+	src: url(../fonts/HanaB.ttf) format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: hanaUL;
+	src: url(../fonts/HanaUL.ttf) format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: hanaCM;
+	src: url(../fonts/HanaCM.ttf) format('truetype');
+	font-style: normal;
+	font-weight: normal;
+}
+
+.hanaM {
+	font-family: hanaM;
+}
+.hanaUL {
+	font-family: hanaUL;
+}
+
+
+/* 하나은행 */
+
+.info01 {
+	border: 1px solid #bcbcbc;
+	padding: 25px;
+}
+
+.etcTitle {
+	font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    background: none;
+    padding-left: 0;
+    margin-top: 20px;
+    line-height: 18px;
+}
+
+.color03 {
+	color: #0a8485 !important;
+}
+.tbl_tbldiv th {
+	background-color: #f2f6f7;
+	border: 1px solid #e9ecef;
+}
+
+.tbl_tbldiv td {
+	border: 1px solid #e9ecef;
+}
+
+.cell-top th, .cell-top td {
+	border-top: 2px solid #bcbcbc;
+}
+
+.cell-bottom td, .cell-bottom td {
+	border-bottom: 2px solid #bcbcbc;
+}
+
+/*
+ * common 공통적 구성요소
+ */
+
+#wrapper {
+/*     margin-top: 72px; */
+    margin-bottom: 50px;
+}
+
+.bread {
+	margin-top: 150px !important;
+}
+
+.brd-title h2 {
+	color: #17a2b8;
+	font-size: 24px;
+	font-weight: 700;
+	padding-bottom: 0;
+	line-height: 1px;
+	margin-bottom: 15px;
+}
+
+.brd-locate {
+    float: right;
+    text-align: right;
+    color: #5c5e5e;
+    margin-top: -50px;
+    margin-right: 1px;
+    padding-bottom: 15px;
+}
+
+
+.bottomBtns {
+    align-content: center !important;
+    align-items: center;
+    margin: 30px;
+}
+
+.btn {
+	font-family: "Raleway", sans-serif;
+	font-weight: 500;
+	font-size: 16px;
+	letter-spacing: 1px;
+	display: inline-block;
+	padding: 8px 28px;
+	border-radius: 3px;
+	transition: 0.5s;
+	margin: 10px;
+}
+
+
+.btn-hana {
+	color: #5c5e5e;
+	background-color: #dadcdb;
+	border: 1px solid #dadcdb;
+}
+
+/* 
+.btn-primary {
+	color: #fff;
+	background-color: #17a2b8;
+	border: 1px solid #17a2b8;
+}
+.btn-primary:hover {
+	color: #fff;
+	background-color: #007576;	
+}
+.btn-secondary {
+	color: #5c5e5e;
+	background-color: #dadcdb;
+	border: 1px solid #dadcdb;
+}
+ */
+.main-color {
+	color: #17a2b8;
+}
+
+.card-text {
+	font-family: hanaUL;
+}
+
+/*
+    member 회원 관련
+ */
+
+.login-input {
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+}
+
+
+#login-box {
+	width: 40%	
+}
+
+#login-box th {
+	border: none !important;
+	padding-right: 13px;
+	color: #4e4039 !important;
+}
+
+#login-box input {
+	border: 1px solid #9f9f9f;
+}
+
+
+/*
+ * board 게시판
+ */
+.board-search {
+    margin-top: 40px;
+    align-content: right;
+}
+
+.board-search search-option {
+    /*
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0 0 3px 0;
+    float: right;
+}
+
+.board-search search-input {
+    float: right;
+}
+
+.page-title {
+	font-family: hana;
+	color: #7a6960;
+	margin: 50px 0 15px 0;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #adb5bd;
+  background-color: transparent;
+  border: 1px solid transparent; }
+  .page-link:hover {
+    z-index: 2;
+    color: #f8f9fa;
+    text-decoration: none;
+    background-color: #6c757d;
+    border-color: #6c757d; }
+  .page-link:focus {
+    z-index: 3;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(27, 104, 255, 0.25); }
+
+.page-item:first-child .page-link {
+  margin-left: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem; }
+
+.page-item:last-child .page-link {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem; }
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #f8f9fa;
+  background-color: #6c757d;
+  border-color: #6c757d; }
+
+.page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  cursor: auto;
+  background-color: #ffffff;
+  border-color: transparent; }
+
+.pagination-lg .page-link {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.09375rem;
+  line-height: 1.5; }
+
+.pagination-lg .page-item:first-child .page-link {
+  border-top-left-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem; }
+
+.pagination-lg .page-item:last-child .page-link {
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem; }
+
+.pagination-sm .page-link {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.76562rem;
+  line-height: 1.5; }
+
+.pagination-sm .page-item:first-child .page-link {
+  border-top-left-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem; }
+
+.pagination-sm .page-item:last-child .page-link {
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem; }
+
+
+
+/* article 상세게시물 */
+
+.article-wrap {
+    position: relative;
+    /*    width: 860px;*/
+    width: 100%;
+    margin: 0 auto;
+    font-size: 15px;
+}
+
+.article-contentbox {
+    padding: 29px 29px 0;
+    border: 1px solid #dadcdb;
+    border-radius: 6px;
+}
+
+.article-header {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dadcdb;
+}
+
+.article-title {
+    float: left;
+    margin-bottom: 0;
+    margin-top: 0;
+    color: #008486;
+}
+
+.bottomBtns {
+    float: right;
+}
+
+.contentRenderer {
+    overflow-y: hidden;
+    position: relative;
+    min-height: 150px;
+    font-size: 15px;
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+
+.article-regDate {
+    float: right;
+    align-content:bottom;
+}
+
+/* comment 댓글 */
+.commentBox .comment-list .comment-area {
+    position: relative;
+    padding: 12px 23px 10px 0;
+    width: 90%;
+}
+
+.comment-item {
+    padding: 5px;
+}
+
+.comment-writer {
+    /* float:left;*/
+    color: #008485;
+    font-weight: bold;
+}
+
+.comment-content {
+    /*float: left;*/
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.comment-info {
+    color: #979797;
+}
+
+.comment-info-button {
+    color: #9f9f9f;
+    text-decoration: none;
+}
+
+.comment-editor {
+    width: 99%;
+    padding-top: 10px;
+    border: 1px solid #9f9f9f;
+    margin-bottom: 30px;
+    background-color: #fff;
+}
+
+.comment-inbox-text {
+    overflow: hidden;
+    overflow-wrap: break-word;
+    width: 99%;
+    height: 100px;
+    /*    border: 1px solid #9f9f9f;*/
+    border: none;
+}
+
+.comment-submit {
+    background-color: #dcdcdc;
+    color: #6c757d;
+    border-radius: 1px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    /*  display: inline-block; */
+    font-size: 15px;
+    height: 40px;
+    width: 70px;
+    margin-bottom: 10px;
+    float: right;
+}
+
+
+/* writing board editor 게시판 글쓰기 */
+
+.writing-editor {
+    width: 100%;
+    font-size: 15px;
+    border : 1px solid #dee2e6;
+    min-width : 450px;
+}
+
+.writing-header {
+    margin-bottom: 20px;
+}
+
+.writing-category {
+    line-height: normal; /* line-height 초기화 */
+    width: 15%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 10px;
+    height: auto;
+    padding: .3em .5em;
+    font-family: inherit; /* 폰트 상속 */
+    border: 1px solid #666;
+}
+
+.writing-title {
+    width: 82%;
+    line-height: 30px;
+}
+
+.writing-title:focus {
+    border: 1px solid #9f9f9f;
+}
+
+.writing-field {
+    width: 100%;
+    min-height: 400px;
+    border: 1px solid #9f9f9f;
+}
+
+.writing-field:focus {
+    border: 1px solid #008486;
+}
+
+
+/* exchange-rate 환율관련 */
+#exchange-rate {
+    background-color: #c5e1a5;
+}
+
+.before {
+    width: 250px;
+    height: 40px;
+    border: 1px solid #f0f0f0;
+    text-align: right;
+}
+
+.after {
+    width: 250px;
+    height: 40px;
+    font-size: 2em;
+    background-color: #f0f0f0;
+    border: none;
+    text-align: right;
+}
+
+.krw {
+    display: inline-block;
+    width: 300px;
+    height: 50px;
+}
+
+.flag-kor {
+    /*    background: url(/global/images/pc/common/ico_kor.png) no-repeat 0 0;*/
+    background-image: url(/WEB-INF/test/img/flags/flag-kor.png) no-repeat;
+    display: inline-block;
+}
+
+.exchange-current {
+    font-size: 1.5em;
+}
+
+.rate {
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+    text-align: right;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+
+/* languages 언어선택 */
+.lang-sw > a > span {
+    display: inline-block;
+    text-decoration: none;
+    color: #008486;
+}
+
+.lang_kor a {
+    background: url(/img/flags/flag-sq-kor.png) no-repeat 50% 50%;
+}
+
+
+/* 지점관련 */
+.brSearch-result {
+	overflow-x:scroll;
+}
+
+.keyword-box {
+	font-weight: 400;
+	line-height: 1.5;
+	font-family: "Open Sans", sans-serif;
+	color: #212529;
+	font-size: 15px;
+	box-sizing: border-box;
+	margin-top: 30px;
+	background: #fff;
+	padding: 6px 10px;
+	position: relative;
+	border-radius: 4px;
+	text-align: left;
+	border: 1px solid #666 !important;
+}
+
+.search-button {
+	font-family: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 5px 28px;
+    border-radius: 3px;
+    transition: 0.5s;
+    margin: 0 5 5 5;
+}
+
+.locale {
+	width: 100%;
+	height: 60px;
+	background-color: silver;
+	padding: 5px;
+}
+
+
+
+/* process steps 관련 */
+
+.wizard {
+    background: #fff;
+    padding: 30px;
+}
+.wizard .nav-tabs {
+    position: relative;
+    border: 0px;
+}
+.wizard > div.wizard-inner {
+    position: relative;
+}
+.connecting-line {
+    height: 2px;
+    background: #e0e0e0;
+    position: absolute;
+    width: 100%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    z-index: 1;
+}
+.stepactive1 a{
+    float: left !important;
+}
+.stepactive2 a{
+    margin-right: 50% !important;
+}
+.stepactive3 a{
+    margin-left: 50% !important;
+}
+.stepactive4 a{
+    float: right !important;
+}
+.next-step:hover, .next-step, .prev-step:hover, .prev-step{
+    position: relative;
+    background-color: #17a2b8;
+/*     background-color: #2ED4E0; */
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-top:30px; 
+}
+
+span.round-tab {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    border-radius: 100px;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    font-size: 25px;
+}
+span.round-tab i{
+    color:#555555;
+}
+.wizard li.active span.round-tab {
+    background:#17a2b8;
+/*     background:#2ED4E0; */
+    color:white;
+    border: 2px solid #fff;
+}
+.wizard li.active span.round-tab i{
+    color: #17a2b8;
+/*     color: #5bc0de; */
+}
+span.round-tab:hover {
+    color: white;
+    border: 2px solid #fff;
+    background-color:#17a2b8; 
+/*     background-color:#2ED4E0;  */
+}
+.wizard .nav-tabs > li {
+    width: 25%;
+}
+.wizard .nav-tabs > li a {
+    width: 70px;
+    height: 70px;
+    margin: 20px auto;
+    border-radius: 100%;
+    padding: 0;
+}
+.wizard .nav-tabs > li a:hover {
+    background: transparent;
+}
+.wizard .tab-pane {
+    position: relative;
+    padding-top: 15px;
+    border-top: 1px solid #fff;
+    margin-top: 30px;
+}
+@media( min-width : 320px ) and ( max-width : 360px ){
+    span.round-tab {
+        font-size: 16px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+    .wizard .nav-tabs > li a {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+    .wizard li.active:after {
+        content: " ";
+        position: absolute;
+        left: 35%;
+    }
+    .stepactive2 a{
+        margin-right: 20% !important;
+    }
+    .stepactive3 a{
+        margin-left: 20% !important;
+    }
+}
+
+/* open account 계좌개설 양식 */
+
+
+.table-hanaform th {
+	background-color: #F2F6F7;
+}
+
+
+
+/**/
+/* Style the form */
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+/* Style the input fields */
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+/* Mark the active step: */
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #4CAF50;
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="translatorMapper">
+	<resultMap type="translatorVO" id="translatorMap">
+		<result column="APPLICANT_ID" property="applicantId" />
+		<result column="MOTHER_LANG" property="motherLang" />
+		<result column="FIRST_NAME" property="firstName" />
+		<result column="LAST_NAME" property="lastName" />
+		<result column="LANG_LV" property="langLv" />
+		<!-- <result column="FILE_NAME" property="fileName" /> -->
+		<result column="REG_DATE" property="regDate" />
+	</resultMap>
+	
+	<!-- ===== 통역사 ===== -->
+	
+	<!-- 등록 -->
+	<insert id="insertOne" parameterType="translatorVO">
+		INSERT INTO TB_TRANSLATOR
+		(TID, APPLICANT_ID, MOTHER_LANG, FIRST_NAME, LAST_NAME, TEL1, TEL2, TEL3, EMAIL, BRANCH, LANG, LANG_LV, MESSAGE, REG_DATE)
+		VALUES(SEQ_TRANSLATOR_NO.NEXTVAL, #{applicantId}, #{motherLang}, #{firstName}, #{lastName}, #{tel1}, #{tel2}, #{tel3}, #{email}, #{branch}, #{lang}, #{langLv}, #{message},  TO_CHAR(SYSDATE, 'YY-MM-DD'))
+	</insert>
+	
+	<!-- 목록조회 -->
+	<select id="selectAll" resultType="translatorVO" resultMap="translatorMap">
+		SELECT TID, APPLICANT_ID, MOTHER_LANG, FIRST_NAME, LAST_NAME, TEL1, TEL2, TEL3, EMAIL, BRANCH,  LANG, LANG_LV, MESSAGE, TO_CHAR(REG_DATE, 'YY-MM-DD') AS REG_DATE
+		FROM TB_TRANSLATOR
+		ORDER BY TID DESC
+	</select>
+
+	<!-- 목록조회 -->
+	<select id="selectByStatus" resultType="translatorVO" resultMap="translatorMap">
+		SELECT *
+		FROM TB_TRANSLATOR
+		WHERE STATUS = '1'
+		ORDER BY TID DESC
+	</select>
+	
+	<!-- 상세조회 -->
+	<select id="selectOne" parameterType="int" resultType="translatorVO" resultMap="translatorMap">
+		SELECT *
+		FROM TB_TRANSLATOR
+		WHERE TID = #{tid}
+	</select>
+	
+	
+	
+</mapper>

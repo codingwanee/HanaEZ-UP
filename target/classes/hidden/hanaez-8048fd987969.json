@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "hanaez",
+  "private_key_id": "8048fd9879697e362e825941bf7a8c7de5f40df5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCzW95hVsSjDxne\nAQD2bekUm5gvdVI09T4UQ0XiSwmUVGcHpFsu+L8qYhSJdeYzBL42lWr1RygE+ahR\n8bPxy4z/MAYG5JE1f2oV5i3Sc/lYMCI3qqiiGmnBt4d6oyGSGQbuV0a9yRnMFnkN\nOdPcagpaK1W5oXj1vZjEKe38vISAKwLpJoXUDM7HTZMMwq+t1lizADVIAn9JraTl\nalt8kggiEfRApxSCEBpemB8t/vq+eEAW/c80MfmWBmuR4F0chd/orJ9hxGwqE80I\nN+3ajYK9SBA15/HfUDbHek978aCEfjETN9RMs52Op0Z/9Ntb4WwqVNqKJJZiPWH4\nvfoYjyPjAgMBAAECggEAArMNMfv9izcAU3Md/TwQY3w6A36OLoqTy9NGhHwF6tCE\n9LxqvFZ1W88DYEH3yeikAj4oLAUENtHP9RMy1sNJlMDJ7CWip9lBJSGo8+P8PPFV\nFe9ArXvmJEqZMi6tWuIyQktYHtyvwaM6YMAUsyOeSY3Yac6Zjc+PVx0KubLXy2QB\ngsoBSRMSFudmPqpnLm3ag6AqZKiSv4Pty1ap+VrtriePJ+e5By/on3Y3ziBAryef\nnR4t8lhN1xUmWzVAvbsLNT13klk9bOx7zpyzzW0HxahM0LyqJvmD0BR0zxwblfDv\ndtgW4lpB1lJ49Ey98+ZXjptFglWyvUhRLn4RKSaEOQKBgQD7rZeJ1qFBJjrLdwwM\nthhNEvtpuwU10tcQDH3IquX3Kz6NmuN5+Go4DHVma+OtuT++JMAEbaZmWe5/lqrv\n6iEmerUuLy03E9RdxMEUmTVXBi4BY9TOWszRqvEma/p5zO0TTKwYd5s5PZpVNESJ\nvgRIZS4FiiFJJisrPkhBYL6s6QKBgQC2cFo4+tywZU7E5fwCw2rSWJksZ7eII43G\nJXZh+7l6oaJcIHc5KLnTSFU5zx/RZEf5KUMYjq3JV2KJgP4CXOvZjrdKr2LR+VUj\nmd7RI51hNMGnegV8aUrQiWrg6VDA2mU9yxxn1JObIh+AjBP9usggzHtbUms/QvPu\nVCxciwja6wKBgQCEczT/C39NxArJLVugDOz5EvZRDGWPj+gywAAqbRYdYBrJdywj\n8oIkARp/zmPB923+aWTMb9BUqRuE9gv7uuG7WHSlW5qWE899kaBzcLXLmKr5fEpw\nVwTXivjiWY02MIzLzVv8fGWqWCsykBFJ1EB4wRbZP3qI/pdVaK+qCHoQkQKBgGh3\n/bITNLxtxqVJbP3IGStKQKwE2DvE4DJO0XNaSePHGsnWbW71uzMZgHQR/w5QdkZf\nMmSljy50M6C5lLqVqxhxeNPzioriU7aHLehklIJNS3czkGClionPprwT3oIQjVjN\nLf7m4386Ev/xNqFci6z8asboczFOjZAz8xMrKm7xAoGBAOilBHlJ5A2gijwvEAeA\n2zpoYmKQMADYvrXhxZDuyhRCJgqt3AkN3CmTRFgsFrligZO+H6lR2dWPyjA+am+L\n7KHNet1nDU9McLxgNimam5MG1L9QbA8Gj0QRTlvEeiX8N9sgQ9iQpeIwF+SDr9Nv\nuq9AUu3IlHGqLXjoCadajfr9\n-----END PRIVATE KEY-----\n",
+  "client_email": "hanaezup@hanaez.iam.gserviceaccount.com",
+  "client_id": "104161486117728586416",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/hanaezup%40hanaez.iam.gserviceaccount.com"
+}

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="certifyMapper">
+	<resultMap type="certHistoryVO" id="certHistoryMap">
+		<result column="APPLICANT_ID" property="applicantId" />
+		<result column="APPLICANT_NM" property="applicantNm" />
+		<result column="APPLICANT_NTN_KO" property="applicantNtnKo" />
+		<result column="APPLICANT_NTN_EN" property="applicantNtnEn" />
+		<result column="FILE_NAME" property="fileName" />
+		<result column="REG_DATE" property="regDate" />
+	</resultMap>
+	
+	<!-- ===== 비대면인증 신청내역 ===== -->
+	<!-- 삽입 -->
+	<insert id="insertHistory" parameterType="certHistoryVO">
+		INSERT INTO TB_CERT_HISTORY
+		(CERTID, APPLICANT_ID, APPLICANT_NM, APPLICANT_NTN_KO, APPLICANT_NTN_EN, FILE_NAME, STATUS, REG_DATE)
+		VALUES(#{certId},#{applicantId},#{applicantNm},#{applicantNtnKo}, #{applicantNtnEn},#{fileName}, '0', TO_CHAR(SYSDATE, 'YY-MM-DD'))
+	</insert>
+		
+	<!-- 전체조회 -->
+	<select id="selectAllHistory" resultType="certHistoryVO" resultMap="certHistoryMap">
+		SELECT CERTID, APPLICANT_ID, APPLICANT_NM, APPLICANT_NTN_KO, APPLICANT_NTN_EN, FILE_NAME, STATUS, TO_CHAR(REG_DATE, 'YY-MM-DD') AS REG_DATE
+		FROM TB_CERT_HISTORY
+	</select>
+		
+	<!-- 상세조회 -->
+	<select id="selectOneHistory" resultType="certHistoryVO" resultMap="certHistoryMap" >
+		SELECT *
+		FROM TB_CERT_HISTORY
+		WHERE CERTID = #{certId}
+	</select>
+	
+	
+	<!-- 해당 신청자의 지난 신청목록 -->
+	<select id="selectAllByApplicant" parameterType="String" resultType="certHistoryVO" resultMap="certHistoryMap" >
+		SELECT CERTID, APPLICANT_ID, APPLICANT_NM, APPLICANT_NTN_KO, APPLICANT_NTN_EN, FILE_NAME, STATUS, TO_CHAR(REG_DATE, 'YY-MM-DD') AS REG_DATE
+		FROM TB_CERT_HISTORY
+		WHERE APPLICANT_ID = #{applicantId}
+	</select>
+	
+	<!-- 승인 또는 거절 처리 -->
+	<update id="updateStatus" parameterType="certHistoryVO">
+		UPDATE TB_CERT_HISTORY
+		SET STATUS = #{status} AND REASON = #{reason}
+		WHERE CERTID = #{certId}
+	</update>
+	
+	<!-- 미처리 건 알림 -->
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(STATUS)
+		FROM TB_CERT_HISTORY
+		WHERE STATUS = '0'
+	</select>
+	
+	<!-- certId에 대한 시퀀스 -->
+	<!-- (CONCAT('FFF', (LPAD(TO_CHAR(SEQ_CERT_HISTORY.NEXTVAL), 8, '0'))))	-->
+	<select id="selectSeq" resultType="int">
+		SELECT SEQ_CERT_HISTORY.NEXTVAL FROM DUAL
+	</select>
+
+	
+
+
+	<!-- ===== 파일 ===== -->
+	<!-- 신청번호에 따른 파일이름 반환(외국인등록증, 비자) -->
+	<select id="selectByCertId" parameterType="String" resultType="String">
+		SELECT SAVENAME
+		FROM TB_CERT_FILE 
+		WHERE CERTID = #{certId}
+	</select>
+	
+	<!-- 파일 삽입 -->
+	<insert id="insertFile" parameterType="certFileVO">
+		INSERT INTO TB_CERT_FILE
+		(SAVENAME, ORGINNAME, CERTID)
+		VALUES(#{saveName}, #{originName}, #{certId})
+	</insert>	
+
+
+</mapper>	

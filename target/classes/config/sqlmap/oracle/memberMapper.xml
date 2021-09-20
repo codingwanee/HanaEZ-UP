@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+	<resultMap type="memberVO" id="memberMap">
+		<result column="SOCIAL_NUM" property="socialNum" />
+		<result column="EMAIL_ID" property="emailId" />
+		<result column="EMAIL_DOMAIN" property="emailDomain" />
+		<result column="OTP_KEY" property="otpKey" />
+	</resultMap>	
+	
+	<!-- 회원가입 -->
+	<insert id="insertOne" parameterType="memberVO">
+		INSERT INTO TB_MEMBER
+		(ID, MID, NAME, PASSWORD, NATIONALITY, SOCIAL_NUM, POSTNUM, EMAIL_ID, EMAIL_DOMAIN, CONTACT, TYPE, ADDR1, ADDR2)
+		VALUES (#{id}, SEQ_MEMBER.NEXTVAL, #{name}, #{password}, #{nationality}, #{socialNum}, #{postnum}, #{emailId}, #{emailDomain}, #{contact}, '0', #{addr1}, #{addr2})
+	</insert>
+	
+	<!-- 아이디 중복체크 -->
+	<select id="selectOneById" parameterType="String" resultType="memberVO">
+		SELECT ID
+		FROM TB_MEMBER
+		WHERE ID = #{id}
+	</select>
+
+	<!-- 로그인을 위한 조회 -->
+	<select id="login" parameterType="memberVO" resultType="memberVO">
+		SELECT ID, TYPE
+		FROM TB_MEMBER
+		WHERE ID = #{id} and PASSWORD = #{password}
+	</select>
+	
+	<!-- 회원 상세조회(마이페이지) -->
+	<select id="selectOne" parameterType="memberVO" resultType="memberVO" resultMap="memberMap">
+		SELECT *
+		FROM TB_MEMBER
+		WHERE ID = #{id}
+	</select>
+	
+	<!-- 회원 인증상태 변경 -->
+	<update id="updateStatus" parameterType="memberVO">
+		UPDATE TB_MEMBER
+		SET STATUS = #{status}
+		WHERE ID = #{id}
+	</update>
+</mapper>
