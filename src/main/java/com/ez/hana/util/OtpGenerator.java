@@ -24,34 +24,26 @@ public class OtpGenerator {
 	@GetMapping
     public ModelAndView otpGenerator(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException {         
 
-		// Allocating the buffer
-//      byte[] buffer = new byte[secretSize + numOfScratchCodes * scratchCodeSize];
-        byte[] buffer = new byte[5 + 5 * 5];
-         
-        // Filling the buffer with random numbers.
-        // Notice: you want to reuse the same random generator
-        // while generating larger random number sequences.
-        new Random().nextBytes(buffer);
+        byte[] buffer = new byte[5 + 5 * 5]; // [숫자 + scratch 코드 * scratch code 크기]         
+        new Random().nextBytes(buffer); // 랜덤 숫자 부여
  
-        // Getting the key and converting it to Base32
+        // 32진법으로 키 변환
         Base32 codec = new Base32();
-//      byte[] secretKey = Arrays.copyOf(buffer, secretSize);
-        byte[] secretKey = Arrays.copyOf(buffer, 10);
-        byte[] bEncodedKey = codec.encode(secretKey);
+        
+        byte[] secretKey = Arrays.copyOf(buffer, 10); // 암호화 키        
+        byte[] bEncodedKey = codec.encode(secretKey); // 복호화 키
          
-        // 생성된 Key!
+        // 생성된 Key
         String encodedKey = new String(bEncodedKey);
          
-        System.out.println("encodedKey : " + encodedKey);
-        
-        
+        // System.out.println("encodedKey : " + encodedKey);
+                
         MemberVO loginVO = (MemberVO) session.getAttribute("loginVO");
         String userName = loginVO.getId();
         String hostName = "HanaEZ UP";
         
-//      String url = getQRBarcodeURL(userName, hostName, secretKeyStr);
-        String url = getQRBarcodeURL(userName, hostName, encodedKey); // 생성된 바코드 주소!
-        System.out.println("URL : " + url);
+        String url = getQRBarcodeURL(userName, hostName, encodedKey); // 생성된 바코드 주소
+        // System.out.println("URL : " + url);
         
         ModelAndView mav = new ModelAndView("sample/sample");
         

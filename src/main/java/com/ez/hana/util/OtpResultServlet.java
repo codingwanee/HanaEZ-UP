@@ -16,7 +16,12 @@ import org.apache.commons.codec.binary.Base32;
  
 public class OtpResultServlet extends HttpServlet {
  
-    @Override
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
     protected void service(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
          
@@ -36,7 +41,7 @@ public class OtpResultServlet extends HttpServlet {
             e.printStackTrace();
         }
          
-        // 일치한다면 true.
+        // 일치한다면 true 반환
         System.out.println("is checkCode true : " + codeChecking);
          
     }
@@ -45,8 +50,6 @@ public class OtpResultServlet extends HttpServlet {
         Base32 codec = new Base32();
         byte[] decodedKey = codec.decode(secret);
  
-        // Window is used to check codes generated in the near past.
-        // You can use this value to tune how far you're willing to go.
         int window = 3;
         for (int i = -window; i <= window; ++i) {
             long hash = verifyCode(decodedKey, t + i);
@@ -56,7 +59,7 @@ public class OtpResultServlet extends HttpServlet {
             }
         }
  
-        // The validation code is invalid.
+        // hash와 code가 일치하지 않을 시 false 반환
         return false;
     }
      
@@ -75,12 +78,9 @@ public class OtpResultServlet extends HttpServlet {
  
         int offset = hash[20 - 1] & 0xF;
  
-        // We're using a long because Java hasn't got unsigned int.
-        long truncatedHash = 0;
+        long truncatedHash = 0; 
         for (int i = 0; i < 4; ++i) {
             truncatedHash <<= 8;
-            // We are dealing with signed bytes:
-            // we just keep the first byte.
             truncatedHash |= (hash[offset + i] & 0xFF);
         }
  
