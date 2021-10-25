@@ -1,10 +1,10 @@
 # HanaEZ-UP
 
 
-### HanaEZ-UP 시연동영상
+## HanaEZ-UP 시연동영상
 - https://youtu.be/y73XXJKaoJ0
 
-
+<br />
 
 ## 프로젝트 개요
 
@@ -15,6 +15,7 @@
 - 특징 : 기본 금융 서비스에 더해 비대면 본인인증, 외국인 특화지점 이용(검색, 예약), 통역사 신청기능 등
 
 <br />
+
 ## 사용 기술
 
 - Frontend: javascript, jQuery, bootstrap, HTML/CSS
