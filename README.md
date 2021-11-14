@@ -4,6 +4,7 @@
 ## HanaEZ-UP 시연동영상
 - https://youtu.be/y73XXJKaoJ0
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/y73XXJKaoJ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <br />
 
 ## 프로젝트 개요
@@ -56,3 +57,18 @@
 - 국내 거주 외국인을 위한 서비스가 무엇이 있을지 고민하는 데 중점을 두었기 때문에, 여-수신 등 실제 금융상품은 심도있게 다루지 못했음
 
 <br />
+
+
+## 간편히 살펴보기
+<img src="Slide1.PNG"/><br>
+<img src="Slide2.PNG"/><br>
+<img src="Slide3.PNG"/><br>
+<img src="Slide4.PNG"/><br>
+<img src="Slide5.PNG"/><br>
+<img src="Slide6.PNG"/><br>
+<img src="Slide7.PNG"/><br>
+<img src="Slide8.PNG"/><br>
+<img src="Slide9.PNG"/><br>
+<img src="Slide10.PNG"/><br>
+<img src="Slide11.PNG"/><br>
+
