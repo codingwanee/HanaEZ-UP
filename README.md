@@ -4,8 +4,9 @@
 ## HanaEZ-UP 시연동영상
 - https://youtu.be/y73XXJKaoJ0
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/y73XXJKaoJ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<br />
+   <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/embed/y73XXJKaoJ0">
+   <img src="YouTube Thumbnail.png" style="width:600px;">
+   </a>
 
 ## 프로젝트 개요
 
